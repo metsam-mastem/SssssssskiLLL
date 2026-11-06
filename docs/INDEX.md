@@ -29,6 +29,7 @@
 CONFIRMED = مستقیماً از منبع قابل استناد؛ README-CLAIM = ادعای مستندات upstream؛ INFERRED = استنتاج؛ UNKNOWN = نامعلوم؛ NOT RUN = اجرا نشده؛ BLOCKED = مانع مشخص.
 
 ## اسناد
+- [جمع‌بندی اجرایی فاز یک](EXECUTIVE-SUMMARY.md)
 - [روش‌شناسی](METHODOLOGY.md)
 - [فهرست مخازن](REPOSITORY-INVENTORY.md)
 - [اختلاف forkها با parent](comparative/fork-delta.md)
