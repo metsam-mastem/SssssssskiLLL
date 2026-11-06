@@ -9,6 +9,9 @@
 - [فهرست دانش](docs/INDEX.md)
 - [روش‌شناسی](docs/METHODOLOGY.md)
 - [فهرست مخازن و snapshot](docs/REPOSITORY-INVENTORY.md)
+- [مجوز و منشأ کد](docs/comparative/license-and-provenance.md)
+- [دفتر تست‌ها](docs/reference/test-register.md)
+- [فهرست سورس‌های upstream](sources/README.md)
 - [گزارش‌های مستقل](docs/repositories/)
 - [تحلیل تطبیقی](docs/comparative/)
 
