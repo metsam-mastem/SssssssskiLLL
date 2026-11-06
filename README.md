@@ -12,6 +12,8 @@
 - [مجوز و منشأ کد](docs/comparative/license-and-provenance.md)
 - [دفتر تست‌ها](docs/reference/test-register.md)
 - [فهرست سورس‌های upstream](sources/README.md)
+- [نقشه فایل‌های کلیدی سورس](sources/FILE-MAP.md)
+- [تحلیل اختلاف forkها](docs/comparative/fork-delta.md)
 - [گزارش‌های مستقل](docs/repositories/)
 - [تحلیل تطبیقی](docs/comparative/)
 
