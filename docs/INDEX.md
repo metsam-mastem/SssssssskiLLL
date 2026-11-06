@@ -31,9 +31,13 @@ CONFIRMED = مستقیماً از منبع قابل استناد؛ README-CLAIM 
 ## اسناد
 - [روش‌شناسی](METHODOLOGY.md)
 - [فهرست مخازن](REPOSITORY-INVENTORY.md)
+- [اختلاف forkها با parent](comparative/fork-delta.md)
+- [مقایسه مجوزها](comparative/license-and-provenance.md)
+- [دفتر موجودی تست‌ها](reference/test-register.md)
 - [مجوز و منشأ کد](comparative/license-and-provenance.md)
 - [دفتر تست‌ها](reference/test-register.md)
 - [فهرست ارجاعات سورس](../sources/README.md)
 - گزارش‌های مستقل در repositories/
 - تحلیل‌های تطبیقی در comparative/
 - واژه‌نامه و شواهد در reference/
+- نقشه سورس‌های pin‌شده در ../sources/FILE-MAP.md
