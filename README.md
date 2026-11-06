@@ -6,6 +6,7 @@
 فاز یک: هشت مخزن عمومی thedotmack: claude-mem، lossless-claw، membench، mcp-client-cli، hermes-agent، superset، ODS و humanish.
 
 ## ناوبری
+- [جمع‌بندی اجرایی فاز یک](docs/EXECUTIVE-SUMMARY.md)
 - [فهرست دانش](docs/INDEX.md)
 - [روش‌شناسی](docs/METHODOLOGY.md)
 - [فهرست مخازن و snapshot](docs/REPOSITORY-INVENTORY.md)
