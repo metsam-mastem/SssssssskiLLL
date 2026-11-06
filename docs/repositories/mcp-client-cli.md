@@ -30,3 +30,14 @@ Audit command/argument parsing, environment-variable injection, server process s
 
 ## Next source targets
 src/client/MCPClient.ts; src/cli/generator.ts; src/cli/index.ts; src/config/loader.ts; src/types/mcp.ts; bin/mcp-cli.js; examples/.
+
+
+## Source-level findings (confirmed by code inspection)
+- src/client/MCPClient.ts starts a child process via Node child_process.spawn, tracks numeric/string request IDs and pending promises, parses a stream buffer and maintains initialization/capability state.
+- src/cli/generator.ts maps JSON Schema types to Commander flags: integer/number → number, array/object → JSON, boolean → boolean, otherwise string; required fields become requiredOption and optional fields become optional options.
+- src/config/loader.ts searches project-local .mcp-cli.json, home .mcp-cli.json and ~/.config/mcp-cli/config.json; config defines process launch command/args/env, while tool schemas are discovered at runtime.
+- Security review must inspect spawn options, stdio framing, pending request timeout/cleanup, malformed JSON, server crash/restart, env inheritance, and JSON schema constructs not covered by the simple generator.
+- package.json declares node --test, but no test-named paths exist in the snapshot; no test execution evidence.
+
+## Core flow (source-grounded)
+Load named server config → spawn configured command with args/env → MCP initialize handshake → tools/list → generate Commander command options → tools/call → serialize/formatted result → graceful process shutdown.
