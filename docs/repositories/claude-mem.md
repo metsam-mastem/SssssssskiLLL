@@ -43,3 +43,15 @@ Capture hooks/integrations → worker/service queue → observation processing a
 
 ## Next source targets
 src/services/worker-service.ts; src/services/context/; src/services/search/; plugin/hooks/; plugin/skills/; tests/sqlite/; tests/worker/; scripts/test-lanes.ts; docs/configuration and privacy/sync guides.
+
+
+## Source-level findings (confirmed by code inspection)
+- src/cli/handlers/observation.ts documents a pure hook handler: it packages observation events into a spool and delegates diagnostics; it explicitly avoids direct stdout/stderr writes and process exit in the handler.
+- The observation path bounds payloads, filters project/tool events, redacts log output and attempts server dispatch with a 2-second timeout before falling back to local spool.
+- src/services/worker-service.ts imports Bun SQLite, Node child_process spawn, MCP stdio client transport, hook spool/drainer, retention pruning, worker supervisor, environment sanitizer, Chroma sync and telemetry. This is a long-running worker/supervisor, not merely a prompt file.
+- src/cli/handlers/memory-search.ts bounds query length/UTF-8 bytes, resolves memory roots and restricts memory path handling to configured/native memory roots.
+- Package scripts include hook I/O and spawn-environment discipline checks, clean-room smoke, postinstall allowlist check, worker test lanes and integration/E2E lanes.
+- Tree has multiple integration packages (OpenClaw, OMP, Pi, DSH, Hermes, ODS, Cursor, Grok Bot) alongside core; separate runtime contracts and release artifacts must be audited per adapter.
+
+## Core flow (source-grounded)
+Agent hook → normalize/filter/bound event → server dispatch or local spool → worker drain → worker-side processing/storage/indexing → smart search/context assembly → runtime-specific hook/MCP context delivery.
