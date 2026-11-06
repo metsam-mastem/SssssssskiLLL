@@ -18,3 +18,7 @@
 - Do not import source into this repository until license and provenance are clear.
 - Store derived analysis, small excerpts only when needed, and links to exact upstream files.
 - Never store credentials, private transcripts, production data or user secrets.
+
+
+## Pinned file map
+- [نقشه فایل‌های کلیدی سورس](FILE-MAP.md)
