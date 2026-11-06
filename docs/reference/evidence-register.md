@@ -3,7 +3,7 @@
 ## Snapshotهای upstream
 همه موارد از GitHub API و شاخه پیش‌فرض main در برداشت 2026-11-06 ثبت شده‌اند.
 
-| Repo | Commit/Tree SHA | منبع درخت |
+| Repo | Commit/Commit SHA | منبع درخت |
 |---|---|---|
 | claude-mem | 8954effe93546e9cd55b793a878f4bf855c69b22 | https://github.com/thedotmack/claude-mem/tree/main |
 | lossless-claw | 4fdb53ca9949faf1e7ffaa6abadca7f8c9921130 | https://github.com/thedotmack/lossless-claw/tree/main |
@@ -30,3 +30,7 @@
 - فهرست کامل paths و اندازه‌ها به JSON/CSV machine-readable.
 - پیوند ادعاها به line ranges.
 - اجرای build/test و ثبت logs؛ فعلاً NOT RUN.
+
+
+## کشف مهم humanish
+Snapshot کامل humanish فقط پنج blob دارد: .gitignore، LICENSE، README.md، plans/2026-05-14-humanish.md و reports/2026-05-14-humanish-server.md. هیچ کد اجرایی در tree وجود ندارد.
