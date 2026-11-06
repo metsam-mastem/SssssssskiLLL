@@ -42,3 +42,7 @@ ARCHITECTURE.md; SECURITY_AUDIT.md; SECURITY.md; install.sh; install.ps1; ods/RE
 
 ## Core flow (source-grounded at documentation/interface level)
 Root installer → ods installer phases → host/platform preflight and generated configuration/secrets → base + hardware overlay compose services → registry/CLI and dashboard API → optional extensions and agent policy gateway. Actual deployment still NOT RUN.
+
+
+## Parent delta
+Parent current head: Osmantic/ODS @ 891f722ab7cca7715fa719cff5f8b3ac3b09c1ac (2026-11-03). Fork head: fce1a2281343cd9de1ca0622b4bbf28f3469523e (2026-10-24). Path/blob comparison: parent 5,960 files, fork 5,818; 0 only in fork, 142 only in parent, 452 shared paths with different blobs. The fork is close in path count but not identical; it omits parent paths and differs in many files. See [fork delta](../comparative/fork-delta.md).
