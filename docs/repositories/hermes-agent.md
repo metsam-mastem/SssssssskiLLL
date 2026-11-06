@@ -36,3 +36,15 @@ Tool execution boundaries, shell/process invocation, provider credential storage
 
 ## Next source targets
 run_agent.py; agent/; tools/registry.py or equivalent current registry; trajectory_compressor.py; hermes_state.py; gateway/; hermes_cli/; plugins/memory/; pyproject.toml; SECURITY.md; tests/agent and tests/acp; compare NousResearch parent.
+
+
+## Source-level findings (confirmed by code inspection)
+- agent/context_engine.py defines a pluggable context-engine interface selected by config; only one context engine is active. Lifecycle includes session start, usage updates, should_compress, compress and session end.
+- agent/memory_manager.py centralizes built-in memory plus at most one external memory provider; this is an explicit constraint to avoid tool-schema bloat/conflicting backends.
+- toolsets.py composes reusable named toolsets from core tool names; tools include terminal/process, file operations, web, skills and browser automation.
+- README claims self-improving skills, periodic memory nudges, FTS5 session search, LLM summaries, multiple messaging platforms and terminal backends. These capabilities need per-module validation and should not be treated as one monolithic agent feature.
+- run_agent.py is a very large entry/runtime file (~621 KB in this snapshot); this raises maintainability and review-cost concerns and suggests decomposing analysis by class/function and test ownership.
+- Fork of NousResearch/hermes-agent: parent delta remains unmeasured because cross-repository compare endpoint returned 404 in this pass.
+
+## Core flow (source-grounded at interface level)
+CLI/gateway entry → provider/model adapter → agent loop → context engine + memory manager → tool registry/toolsets → tool execution → session and channel delivery. Exact orchestration order still requires deeper function-level trace.
