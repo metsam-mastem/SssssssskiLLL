@@ -14,8 +14,8 @@
 | [humanish](https://github.com/thedotmack/humanish) | 5 | 79,894 | 0 | Apache-2.0 | مستقل |
 | **جمع** | **16,533** | **261,243,142** | **4,800** | — | — |
 
-## Tree SHA
-| مخزن | Tree SHA |
+## Commit SHA (برای pin کردن snapshot)
+| مخزن | Commit SHA |
 |---|---|
 | claude-mem | 8954effe93546e9cd55b793a878f4bf855c69b22 |
 | lossless-claw | 4fdb53ca9949faf1e7ffaa6abadca7f8c9921130 |
