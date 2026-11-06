@@ -43,3 +43,7 @@ README.md; LICENSE.md; package.json; apps/desktop; apps/api; packages/db; packag
 
 ## Core flow (source-grounded at interface level)
 Desktop workspace record → workspace type/path resolution → Git/worktree operations → PTY daemon/process session → desktop/API/TRPC state and diff/status presentation. Validate isolation and process lifecycle before assuming separate workspaces are security sandboxes.
+
+
+## Parent delta
+Parent current head: ParadevAI/Paradev @ 53f1ac1885e3751b939a615f5b54d1976370539b (2026-11-06). Fork head: d4b10385dcd75f3259bb163e53575cd288fac85d (2026-05-15). Path/blob comparison: parent 15,167 files, fork 5,344; 1,520 only in fork, 11,343 only in parent, 1,766 shared paths with different blobs. Fork is substantially divergent/reduced; compare only after licensing and provenance boundaries are clear. See [fork delta](../comparative/fork-delta.md).
