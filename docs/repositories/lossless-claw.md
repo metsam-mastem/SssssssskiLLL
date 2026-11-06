@@ -35,3 +35,16 @@ This is a fork of Martian-Engineering/lossless-claw. Do not assume fork changes 
 
 ## Next source targets
 README.md; docs/architecture.md; index.ts; src/; openclaw.plugin.json; package.json; test/expansion-policy.test.ts; test/migration.test.ts; compare upstream parent.
+
+
+## Source-level findings (confirmed by code inspection)
+- src/engine.ts implements the OpenClaw ContextEngine adapter and wires assembler, compaction, SQLite connection/migrations, expansion grants, retrieval, conversation and summary stores.
+- src/compaction.ts exposes threshold/manual/none decisions; defaults in its config contract include context threshold 0.75, fresh-tail protection 8 turns, leaf chunk ceiling 20,000 tokens, leaf summary target 600 tokens, condensed target 900 tokens and max 10 rounds.
+- src/assembler.ts reconstructs model-ready messages under a token budget and estimates tokens at roughly 4 characters/token; it can add depth-aware system-prompt guidance when summaries exist.
+- src/expansion-policy.ts separates query_probe from explicit_expand and chooses answer_directly, expand_shallow or delegate_traversal using depth, candidate count and estimated token-risk thresholds.
+- src/retrieval.ts exposes summary/file descriptions with DAG lineage fields (parents, children, message IDs, descendants, source token counts and time bounds).
+- Important discrepancy to test: README architecture text describes typical leaf summaries around 800–1200 tokens and condensed summaries around 1500–2000, while compaction source config defaults list targets of 600 and 900. Determine whether those are prompt targets, defaults or a version/documentation drift.
+- Package.json declares Vitest test command: vitest run --dir test; test inventory is 20 files.
+
+## Core flow (source-grounded)
+OpenClaw lifecycle → engine bootstrap/reconcile → ingest raw messages and message parts → SQLite stores → compaction decision → leaf/condensed summaries → ordered context_items replacement → assembler under token budget → retrieval/expansion tools with authorization/policy.
