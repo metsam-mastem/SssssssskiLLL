@@ -48,3 +48,7 @@ README.md; docs/architecture.md; index.ts; src/; openclaw.plugin.json; package.j
 
 ## Core flow (source-grounded)
 OpenClaw lifecycle → engine bootstrap/reconcile → ingest raw messages and message parts → SQLite stores → compaction decision → leaf/condensed summaries → ordered context_items replacement → assembler under token budget → retrieval/expansion tools with authorization/policy.
+
+
+## Parent delta
+Parent current head: Martian-Engineering/lossless-claw @ 51c3c90bfe82fa649e4895dd1a2c4874b5e28f76 (2026-11-05). Fork head: 4fdb53ca9949faf1e7ffaa6abadca7f8c9921130 (2026-03-12). Path/blob comparison: parent 371 files, fork 105; 9 only in fork, 275 only in parent, 71 shared paths with different blobs. This is a stale and materially reduced fork snapshot relative to current parent; see [fork delta](../comparative/fork-delta.md).
