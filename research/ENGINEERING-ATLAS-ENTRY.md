@@ -84,16 +84,3 @@ See [Reverse Engineering Dossier](lossless-claw/REVERSE-ENGINEERING-DOSSIER.md) 
 
 ## Decision
 Adopt the *pattern*, not the implementation: canonical append-only source records + derived summary DAG + rebuildable ordered context projection + bounded cited retrieval. Build a small local SQLite vertical slice before any host plugin integration.
-
-
-## Supplemental findings — storage and fidelity audit (2026-11-06)
-
-Source inspection confirms an embedded Node `node:sqlite`/SQLite architecture with WAL, 30 s busy timeout, foreign keys, 64 MiB page-cache target and `synchronous=NORMAL`. Migrations run under `BEGIN EXCLUSIVE`, use additive/idempotent column checks and versioned backfill markers, and probe FTS5/trigram support before selecting search behavior.
-
-The canonical model is more extensive than a simple message table: conversations/messages/typed parts; summary nodes with raw-source and parent edges; ordered context projection; transcript cursor, epoch, anchor trust, replay keys and persistent gap markers; pending compaction batches/nodes with source fingerprints, retry and lease state; maintenance telemetry; focus briefs; large-file sidecars; and turn-advancement idempotency records.
-
-Important fidelity finding: transcript gaps are persisted as explicit, idempotent markers. Cursor state is an opaque host watermark plus visible frontier. This makes archive coverage diagnosable rather than assuming that a local message sequence is equivalent to the host transcript. Replay keys can be rehydrated for raw user context items. Store APIs also include role-aware replay-flood defenses.
-
-The test inventory spans migration/bootstrap, ingestion/resync, deduplication, summary lineage, compaction workers, bounded assembly/expansion, fidelity/round-trip, search fallback, large files and runtime lifecycle. The package release verification script includes typecheck, build, Vitest, Go TUI tests and package dry-run; these commands were inspected but NOT executed.
-
-**Status update:** storage/schema/migration/test-architecture source inspection = PASS (selected critical files); full source audit and all runtime verification = NOT RUN. See the [expanded dossier](lossless-claw/REVERSE-ENGINEERING-DOSSIER.md) for table groups, invariants and risk register.
