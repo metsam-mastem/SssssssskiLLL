@@ -48,3 +48,7 @@ run_agent.py; agent/; tools/registry.py or equivalent current registry; trajecto
 
 ## Core flow (source-grounded at interface level)
 CLI/gateway entry → provider/model adapter → agent loop → context engine + memory manager → tool registry/toolsets → tool execution → session and channel delivery. Exact orchestration order still requires deeper function-level trace.
+
+
+## Parent delta
+Parent current head: NousResearch/hermes-agent @ ca4360692055bdb4df3a695c164646e528891da8 (2026-11-06). Fork head: 73d0b083510367adec42746e90c41ace16c0afb2 (2026-04-19). Path/blob comparison: parent 22,595 files, fork 2,133; 691 only in fork, 21,153 only in parent, 1,123 shared paths with different blobs. This fork is not a faithful representation of the current parent tree; prioritize understanding the exact fork-specific product scope. See [fork delta](../comparative/fork-delta.md).
