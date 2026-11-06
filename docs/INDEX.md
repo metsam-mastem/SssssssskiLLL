@@ -31,6 +31,9 @@ CONFIRMED = مستقیماً از منبع قابل استناد؛ README-CLAIM 
 ## اسناد
 - [روش‌شناسی](METHODOLOGY.md)
 - [فهرست مخازن](REPOSITORY-INVENTORY.md)
+- [مجوز و منشأ کد](comparative/license-and-provenance.md)
+- [دفتر تست‌ها](reference/test-register.md)
+- [فهرست ارجاعات سورس](../sources/README.md)
 - گزارش‌های مستقل در repositories/
 - تحلیل‌های تطبیقی در comparative/
 - واژه‌نامه و شواهد در reference/
