@@ -32,3 +32,14 @@ Workspace isolation and path traversal, worktree lifecycle, process spawning, te
 
 ## Next source targets
 README.md; LICENSE.md; package.json; apps/desktop; apps/api; packages/db; packages/local-db; packages/host-service; packages/pty-daemon; packages/mcp; packages/workspace-fs; packages/trpc; AGENTS.md; compare ParadevAI/Paradev.
+
+
+## Source-level findings (confirmed by code inspection)
+- Desktop workspaces resolve their path differently by workspace type: branch workspace uses the project main repository path; worktree workspace resolves its stored worktree path from local DB.
+- packages/pty-daemon is a distinct daemon package using node-pty, Node >=20, Bun tests and separate integration tests for control plane, signal recovery, byte fidelity and handoff.
+- Desktop change/workspace routers include dedicated Git command and path validation modules, worker/task handlers, status parsing and worktree import tests.
+- Root LICENSE.md is Elastic License 2.0; the metadata NOASSERTION should not be interpreted as open-source permissive licensing. The hosted/managed-service restriction is material.
+- Fork of ParadevAI/Paradev; parent delta is not yet established.
+
+## Core flow (source-grounded at interface level)
+Desktop workspace record → workspace type/path resolution → Git/worktree operations → PTY daemon/process session → desktop/API/TRPC state and diff/status presentation. Validate isolation and process lifecycle before assuming separate workspaces are security sandboxes.
